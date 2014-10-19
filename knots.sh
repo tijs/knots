@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-version="0.0.7"
+version="0.0.1"
 
-# dots(1) main
+# knots(1) main
 main() {
 
   # paths
   export dirname=$(dirname $(realpath $0))
   export lib="$dirname/lib"
-  export os="$dirname/os"
+  export osx="$dirname/osx"
 
   # parse options
   while [[ "$1" =~ ^- ]]; do
@@ -48,7 +48,7 @@ main() {
 usage() {
   cat <<EOF
 
-  Usage: dots [options] [command] [args ...]
+  Usage: knots [options] [command] [args ...]
 
   Options:
 
@@ -58,39 +58,44 @@ usage() {
   Commands:
 
     reload                  Reload the dotfiles
-    boot <os>               Bootstrap the given operating system
-    update <os|dots>        Update the os or dots
+    boot                    Bootstrap osx
+    update <os|knots>       Update the os or knots
 
 EOF
 }
 
 # Bootstrap the OS
 boot() {
-  if [[ -e "$os/$1/index.sh" ]]; then
-    sh "$os/$1/index.sh"
+  if [[ -e "$osx/index.sh" ]]; then
+    sh "$osx/index.sh"
   else
-    echo "boot: could not find \"$1\""
+    echo "boot: could not find directory"
     exit 1
   fi
 }
 
-# update either dots or OS
+# update either knots or OS
 update() {
-  if [[ -e "$os/$1/index.sh" ]]; then
-    sh "$os/$1/update.sh"
-  else
-    updatedots
-  fi
+  case $1 in
+      osx )
+        sh "$osx/update.sh"
+        exit
+        ;;
+      knots )
+        updateknots
+        exit
+        ;;
+    esac
 }
 
-# update dots(1) via git clone
-updatedots() {
-  echo "updating dots..."
-  mkdir -p /tmp/dots \
-    && cd /tmp/dots \
-    && curl -L# https://github.com/matthewmueller/dots/archive/master.tar.gz | tar zx --strip 1 \
+# update knots(1) via git clone
+updateknots() {
+  echo "updating knots..."
+  mkdir -p /tmp/knots \
+    && cd /tmp/knots \
+    && curl -L# https://github.com/tijs/knots/archive/master.tar.gz | tar zx --strip 1 \
     && ./install.sh \
-    && echo "updated dots to $(dots --version)."
+    && echo "updated knots to $(knots --version)."
   exit
 }
 

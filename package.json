@@ -1,10 +1,10 @@
 {
-  "name": "dots",
-  "version": "0.0.6",
-  "description": "bootstrapping library for osx & ubuntu",
+  "name": "knots",
+  "version": "0.0.1",
+  "description": "bootstrapping library for osx",
   "global": "true",
   "install": "sh install.sh",
   "scripts": [
-    "dots.sh"
+    "knots.sh"
   ]
 }

@@ -12,14 +12,9 @@ mkdir -p "/usr/local/bin"
 sudo cp -R $dirname "$lib/"
 
 # remove existing bin if it exists
-if [ -e "$bin/dots" ]; then
-  rm "$bin/dots"
+if [ -e "$bin/knots" ]; then
+  rm "$bin/knots"
 fi
 
-# symlink dots
-ln -s "$lib/dots/dots.sh" "$bin/dots"
-
-# Ubuntu-only: Change from dash to bash
-if [ "$BASH_VERSION" = '' ]; then
-  sudo echo "dash    dash/sh boolean false" | debconf-set-selections ; dpkg-reconfigure --frontend=noninteractive dash
-fi
+# symlink knots
+ln -s "$lib/knots/knots" "$bin/knots"

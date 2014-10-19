@@ -6,53 +6,32 @@ set -e
 
 # Apps
 apps=(
+  aerofs
   alfred
   dropbox
-  google-chrome
-  qlcolorcode
-  screenflick
-  slack
-  transmit
-  appcleaner
-  firefox
-  hazel
-  qlmarkdown
-  seil
-  spotify
-  vagrant
-  arq
-  flash
-  iterm2
-  qlprettypatch
-  shiori
-  sublime-text3
-  virtualbox
-  atom
   flux
-  mailbox
-  qlstephen
-  sketch
-  tower
-  vlc
-  cloudup
-  font-m-plus
-  nvalt
-  quicklook-json
+  google-chrome
+  google-drive
+  google-plus-auto-backup
+  google-hangouts
+  libreoffice
+  multibit
+  pycharm
+  sublime-text
+  slack
+  spotify
   skype
+  steam
   transmission
-  apikitchen
-  mamp
+  transmit
+  vagrant
+  virtualbox
+  vlc
+  xquartz
 )
 
-# fonts
-fonts=(
-  font-m-plus
-  font-clear-sans
-  font-roboto
-)
-
-# Specify the location of the apps
-appdir="/Applications"
+# # Specify the location of the apps
+# appdir="/Applications"
 
 # Check for Homebrew
 if test ! $(which brew); then
@@ -73,16 +52,17 @@ main() {
   # Tap alternative versions
   brew tap caskroom/versions
 
-  # Tap the fonts
-  brew tap caskroom/fonts
+  # # Tap the fonts
+  # brew tap caskroom/fonts
 
   # install apps
   echo "installing apps..."
-  brew cask install --appdir=$appdir ${apps[@]}
+  # brew cask install --appdir=$appdir ${apps[@]}
+  brew cask install ${apps[@]}
 
   # install fonts
-  echo "installing fonts..."
-  brew cask install ${fonts[@]}
+  # echo "installing fonts..."
+  # brew cask install ${fonts[@]}
 
   # link with alfred
   alfred
