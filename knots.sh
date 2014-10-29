@@ -33,10 +33,6 @@ main() {
       boot $2
       exit
       ;;
-    update )
-      update $2
-      exit
-      ;;
     *)
       usage
       exit
