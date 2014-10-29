@@ -2,14 +2,6 @@
 
 WIP bootstrapping library for osx
 
-## Installation
-
-One-liner:
-
-```
-(mkdir -p /tmp/knots && cd /tmp/knots && curl -L https://github.com/tijs/knots/archive/master.tar.gz | tar zx --strip 1 && sh ./install.sh)
-```
-
 ## What?
 
 Do not use this for your machine just change the original (see credits) instead!

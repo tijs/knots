@@ -59,7 +59,6 @@ usage() {
 
     reload                  Reload the dotfiles
     boot                    Bootstrap osx
-    update <os|knots>       Update the os or knots
 
 EOF
 }
@@ -74,30 +73,6 @@ boot() {
   fi
 }
 
-# update either knots or OS
-update() {
-  case $1 in
-      osx )
-        sh "$osx/update.sh"
-        exit
-        ;;
-      knots )
-        updateknots
-        exit
-        ;;
-    esac
-}
-
-# update knots(1) via git clone
-updateknots() {
-  echo "updating knots..."
-  mkdir -p /tmp/knots \
-    && cd /tmp/knots \
-    && curl -L# https://github.com/tijs/knots/archive/master.tar.gz | tar zx --strip 1 \
-    && ./install.sh \
-    && echo "updated knots to $(knots --version)."
-  exit
-}
 
 # "readlink -f" shim for mac os x
 realpath() {

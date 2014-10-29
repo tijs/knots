@@ -30,15 +30,6 @@ apps=(
   xquartz
 )
 
-# # Specify the location of the apps
-# appdir="/Applications"
-
-# Check for Homebrew
-if test ! $(which brew); then
-  echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
 main() {
 
   # Ensure homebrew is installed
@@ -46,23 +37,15 @@ main() {
 
   # Install homebrew-cask
   echo "installing cask..."
-  brew tap phinze/homebrew-cask
+  brew tap caskroom/homebrew-cask
   brew install brew-cask
 
   # Tap alternative versions
   brew tap caskroom/versions
 
-  # # Tap the fonts
-  # brew tap caskroom/fonts
-
   # install apps
   echo "installing apps..."
-  # brew cask install --appdir=$appdir ${apps[@]}
   brew cask install ${apps[@]}
-
-  # install fonts
-  # echo "installing fonts..."
-  # brew cask install ${fonts[@]}
 
   # link with alfred
   alfred
