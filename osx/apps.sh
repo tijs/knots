@@ -6,7 +6,6 @@ set -e
 
 # Apps
 apps=(
-  aerofs
   alfred
   dropbox
   flux
